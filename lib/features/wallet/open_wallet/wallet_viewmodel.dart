@@ -15,4 +15,9 @@ class WalletViewModel extends BaseViewModel {
     _balance.value += 234;
     notifyListeners();
   }
+
+  payNow() {
+    _balance.value -= 234;
+    notifyListeners();
+  }
 }

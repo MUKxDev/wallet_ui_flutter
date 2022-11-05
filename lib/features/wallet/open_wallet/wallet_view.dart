@@ -22,38 +22,71 @@ class WalletView extends StatelessWidget {
         Widget? child,
       ) {
         return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            centerTitle: false,
+            title: Text(
+              'My Cards',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            actions: [
+              GestureDetector(
+                onTap: () => model.increase(),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    padding: const EdgeInsets.all(6),
+                    margin: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Icon(
+                      Icons.add_rounded,
+                      color: Colors.black,
+                      size: 24,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'My Cards',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      GestureDetector(
-                        onTap: () => model.increase(),
-                        child: Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(
-                            Icons.add_rounded,
-                            color: Colors.black,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text(
+                  //       'My Cards',
+                  //       style: Theme.of(context)
+                  //           .textTheme
+                  //           .titleLarge
+                  //           ?.copyWith(fontWeight: FontWeight.bold),
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () => model.increase(),
+                  //       child: Container(
+                  //         padding: const EdgeInsets.all(6),
+                  //         decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           borderRadius: BorderRadius.circular(10),
+                  //         ),
+                  //         child: const Icon(
+                  //           Icons.add_rounded,
+                  //           color: Colors.black,
+                  //           size: 24,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(
                     height: 24,
                   ),
@@ -278,7 +311,7 @@ class WalletView extends StatelessWidget {
                                     width: 10,
                                   ),
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () => model.payNow(),
                                     style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
